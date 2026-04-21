@@ -1,4 +1,3 @@
-
 // Elementos usados para abrir e fechar o menu mobile.
 let btnMenu = document.getElementById('btn-menu');
 let menu = document.getElementById('menu-mobile');
@@ -6,8 +5,10 @@ let btnFechar = document.querySelector('.btn-fechar');
 let overlay = document.querySelector('.overlay-menu');
 let linksMenu = document.querySelectorAll('.menu-mobile a');
 let linksInternos = document.querySelectorAll('a[href^="#"]');
+let form = document.querySelector('form');
+let mensagemStatus = document.querySelector('#status');
 
-// Faz a página rolar de forma mais suave e um pouco mais lenta.
+// Faz a pagina rolar de forma mais suave e um pouco mais lenta.
 function scrollSuavePara(destino) {
     const posicaoInicial = window.pageYOffset;
     const posicaoFinal = destino.getBoundingClientRect().top + window.pageYOffset;
@@ -34,12 +35,12 @@ function scrollSuavePara(destino) {
     requestAnimationFrame(animarScroll);
 }
 
-// Abre o menu ao clicar no ícone de menu.
+// Abre o menu ao clicar no icone de menu.
 btnMenu.addEventListener('click', () => {
     menu.classList.add('abrir-menu');
 });
 
-// Fecha o menu ao clicar no botão "X".
+// Fecha o menu ao clicar no botao X.
 btnFechar.addEventListener('click', () => {
     menu.classList.remove('abrir-menu');
 });
@@ -49,7 +50,7 @@ overlay.addEventListener('click', () => {
     menu.classList.remove('abrir-menu');
 });
 
-// Fecha o menu ao selecionar uma opção de navegação.
+// Fecha o menu ao selecionar uma opcao de navegacao.
 linksMenu.forEach((link) => {
     link.addEventListener('click', () => {
         menu.classList.remove('abrir-menu');
@@ -74,4 +75,17 @@ linksInternos.forEach((link) => {
         event.preventDefault();
         scrollSuavePara(secaoDestino);
     });
+});
+
+// Mostra uma mensagem de sucesso quando o formulario estiver valido.
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
+
+    mensagemStatus.textContent = 'Mensagem enviada com sucesso!';
+    form.reset();
 });
