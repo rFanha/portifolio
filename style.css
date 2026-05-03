@@ -586,7 +586,7 @@ footer .line-footer p a {
     /* ESTILO DO MENU MOBILE */
     .menu-mobile {
         display: block;
-        background-color: #c34ed041;
+        background-color: #0014329b;
         border-left: 1px solid var(--border-subtle);
         position: fixed;
         top: 0;
