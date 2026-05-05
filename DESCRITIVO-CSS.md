@@ -1,586 +1,457 @@
-# Descritivo do CSS
-
-Este arquivo explica, de forma simples, a função de cada parte principal do [style.css](C:/projetos/portifolio/style.css).
-
 ## Estrutura geral
 
-O `style.css` organiza o visual do portfólio:
+O `style.css` organiza o visual do portfólio pessoal:
 
-- define cores e fontes do projeto
-- estiliza cabeçalho, topo, especialidades, sobre, portfólio, formulário e rodapé
-- controla animações e responsividade
+- define reset, fonte, cores e variáveis globais;
+- estiliza cabeçalho, menu desktop, menu mobile, topo, soft skills, tecnologias, sobre, portfólio, formulário e rodapé;
+- controla efeitos de hover, sombras, animação da imagem principal e adaptação para telas menores.
 
 ## 1. Reset e base global
 
 ### `*`
 
-```css
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-```
-
-Função:
-
-- remove margens e espaçamentos padrão do navegador
-- faz largura e altura dos elementos considerarem `padding` e `border`
+Remove margens e espaçamentos padrão do navegador e faz `width` e `height` considerarem `padding` e `border` com `box-sizing: border-box`.
 
 ### `:root`
 
-```css
-:root {
-    --bg-main: #000000;
-    --bg-surface: #121212;
-    --bg-card: linear-gradient(180deg, #1a1a1a 0%, rgba(0, 0, 0, 0.92) 100%);
-    --border-subtle: #232323;
-    --text-main: #ffffff;
-    --text-muted: #8c96a5;
-    --accent: #001432;
-    --accent-strong: #0046f5;
-}
-```
+Guarda as cores e fundos principais do projeto em variáveis CSS:
 
-Função:
+- `--bg-main`: fundo preto principal;
+- `--bg-surface`: fundo escuro alternativo;
+- `--bg-card`: gradiente usado em cards;
+- `--border-subtle`: cor de bordas discretas;
+- `--text-main`: texto principal branco;
+- `--text-muted`: texto secundário acinzentado;
+- `--accent`: azul escuro;
+- `--accent-strong`: azul de destaque.
 
-- guarda as cores principais do projeto em variáveis
-- facilita trocar a paleta sem alterar o CSS inteiro
+Isso facilita manter a identidade visual consistente e trocar a paleta em um único lugar.
 
 ### `body`
 
-Função:
-
-- define a fonte padrão como `Poppins`
-- define o fundo principal escuro do site
+Define a fonte padrão como `Poppins`, usa o fundo principal escuro e aplica `height: 100vh`.
 
 ### `.interface`
 
-Função:
-
-- limita a largura máxima do conteúdo
-- centraliza as seções na página
+Limita a largura máxima do conteúdo em `1280px` e centraliza os blocos principais da página.
 
 ### `.flex`
 
-Função:
+Aplica `display: flex` para reutilizar alinhamentos lado a lado nas seções.
 
-- aplica `display: flex`
-- serve como base para alinhar elementos lado a lado
-
-## 2. Botões e títulos
+## 2. Botões, títulos e efeitos globais
 
 ### `.btn-contato a`
 
-Função:
-
-- estiliza os links que funcionam como botão
-- aplica fundo azul, borda arredondada e destaque visual
+Estiliza links de contato como botões, com gradiente azul, texto branco, borda sutil, cantos arredondados e transição.
 
 ### `h2.titulo` e `h2.titulo span`
 
-Função:
-
-- definem o estilo dos títulos principais das seções
-- o `span` recebe a cor de destaque azul
+Define o estilo dos títulos das seções. O `span` recebe o azul de destaque para enfatizar parte do texto.
 
 ### `.btn-contato a:hover`, `.btn-social a:hover`, `button:hover`
 
-Função:
-
-- aplica efeito ao passar o mouse
-- adiciona brilho e pequeno aumento de escala
+Adiciona brilho azul e aumento de escala ao passar o mouse.
 
 ## 3. Cabeçalho
 
 ### `header`
 
-Função:
-
-- define espaçamento superior e lateral do cabeçalho
+Define o espaçamento interno do cabeçalho.
 
 ### `header > .interface`
 
-Função:
+Alinha logo, menu desktop, botão de contato e botão do menu mobile na mesma linha, com espaço entre eles.
 
-- posiciona logo, menu e botão de contato na mesma linha
-- usa alinhamento e espaçamento entre eles
+### `.logo img` e `.logo-footer img`
 
-### `.logo img`, `.logo-footer img`
+Faz as logos ocuparem 100% da largura disponível, preservando proporção. Depois limita os tamanhos com `max-width`.
 
-Função:
+### `.logo img`
 
-- controla o tamanho das logos
-- impede que a imagem fique maior que o necessário
+Limita a logo do cabeçalho a `170px`.
+
+### `.logo-footer img`
+
+Limita a logo do rodapé a `110px`.
 
 ### `header a`
 
-Função:
-
-- define a cor padrão dos links do menu
-- remove sublinhado
+Remove sublinhado dos links do cabeçalho, aplica cor secundária e prepara a transição de hover.
 
 ### `header nav.menu-desktop a:hover`
 
-Função:
-
-- muda a cor do item do menu ao passar o mouse
+Deixa o link branco e aumenta levemente o item quando o mouse passa por cima.
 
 ### `header nav ul` e `header nav.menu-desktop ul li`
 
-Função:
-
-- remove bullets da lista
-- deixa os itens do menu em linha
+Remove os marcadores da lista e exibe os itens do menu desktop em linha.
 
 ### `.btn-abrir-menu` e `.btn-abrir-menu i`
 
-Função:
-
-- controla o botão do menu mobile
-- o ícone só aparece em telas menores
+Controla o botão de abertura do menu mobile. Ele fica escondido no desktop e aparece no bloco responsivo. O ícone tem cor branca e tamanho de `40px`.
 
 ### `.menu-mobile`, `.overlay-menu`
 
-Função:
-
-- deixam o menu mobile e a camada de fundo escondidos por padrão
+Mantêm o menu mobile e a camada de overlay escondidos por padrão no desktop.
 
 ## 4. Topo do site
 
 ### `section.topo-do-site`
 
-Função:
-
-- define o espaçamento da primeira seção
+Define o espaçamento da primeira seção do site.
 
 ### `section.topo-do-site .flex`
 
-Função:
-
-- alinha texto e imagem lado a lado
-- cria distância entre os dois blocos
+Alinha texto e imagem lado a lado, centraliza os elementos e cria um espaçamento de `90px` entre eles.
 
 ### `.topo-do-site h1`
 
-Função:
-
-- estiliza o título principal do hero
+Estiliza o título principal do topo, com texto branco, tamanho grande e linha mais compacta.
 
 ### `.topo-do-site .txt-topo-site h1 span`
 
-Função:
-
-- aplica cor de destaque ao ponto final do título
+Aplica a cor azul de destaque ao trecho final do título.
 
 ### `.topo-do-site .txt-topo-site p`
 
-Função:
-
-- estiliza o parágrafo de apresentação
+Estiliza o parágrafo de apresentação com texto secundário e margem vertical.
 
 ### `.topo-do-site .img-topo-site img`
 
-Função:
+Controla a foto principal do topo:
 
-- controla tamanho e enquadramento da foto do topo
-- aplica borda arredondada, borda sutil e brilho azul
-- mantém a animação de flutuação
+- usa imagem quadrada com `aspect-ratio: 1 / 1`;
+- limita a largura máxima ao espaço disponível;
+- recorta a imagem com `object-fit: cover`;
+- deixa a foto circular com `border-radius: 50%`;
+- aplica borda e sombras azuladas;
+- ativa a animação de flutuação.
 
 ### `@keyframes flutuar`
 
-Função:
+Move a imagem verticalmente de `top: 0` até `top: 30px`, criando o efeito de flutuação.
 
-- cria a animação vertical da imagem do topo
-
-## 5. Especialidades
+## 5. Soft skills
 
 ### `section.especialidades`
 
-Função:
-
-- define espaçamento da seção
+Define o espaçamento da seção de soft skills.
 
 ### `section.especialidades .flex`
 
-Função:
-
-- ativa quebra de linha dos cards
-- centraliza os cards e controla o espaçamento
+Permite quebra de linha dos cards, centraliza os itens e controla o espaçamento entre eles.
 
 ### `.especialidades .especialidades-box`
 
-Função:
+Estiliza cada card de soft skill:
 
-- estiliza cada card de especialidade
-- define largura, fundo, borda, espaçamento interno e cantos arredondados
+- texto branco;
+- largura calculada para três cards por linha no desktop;
+- fundo em gradiente escuro;
+- borda discreta;
+- espaçamento interno;
+- margem superior;
+- cantos arredondados;
+- transição de hover.
 
 ### `.especialidades .especialidades-box:hover`
 
-Função:
-
-- dá destaque visual ao card no hover
+Destaca o card com aumento de escala, sombra azul e borda mais evidente.
 
 ### `.especialidades .especialidades-box i`
 
-Função:
-
-- estiliza os ícones dos cards
+Estiliza os ícones dos cards com tamanho grande, cor azul e espaçamento.
 
 ### `.especialidades .especialidades-box h3`
 
-Função:
-
-- estiliza os títulos internos dos cards
+Define tamanho e margem dos títulos internos dos cards.
 
 ## 6. Tecnologias e ferramentas
 
 ### `section.tecnologias`
 
-FunÃ§Ã£o:
-
-- define o espaÃ§amento da seÃ§Ã£o de tecnologias
+Define o espaçamento da seção de tecnologias.
 
 ### `.tecnologias-box`
 
-FunÃ§Ã£o:
-
-- cria um agrupamento simples para dar espaço entre o título e as tecnologias
-- não adiciona caixa visual, borda ou fundo ao redor das tags
+Cria afastamento entre o título da seção e a lista de tecnologias, sem adicionar caixa visual ao redor.
 
 ### `.tecnologias-grid`
 
-FunÃ§Ã£o:
-
-- organiza as tecnologias em linhas com quebra automÃ¡tica
-- centraliza os itens dentro da seÃ§Ã£o
+Organiza as tecnologias em uma linha flexível com quebra automática, centralização e espaçamento entre tags.
 
 ### `.tech-tag`
 
-FunÃ§Ã£o:
+Estiliza cada tecnologia como uma cápsula:
 
-- estiliza cada tecnologia como uma cÃ¡psula destacada
-- aplica borda arredondada, contraste e leitura centralizada
+- usa `inline-flex` para centralizar o texto;
+- aplica altura mínima, espaçamento interno e borda totalmente arredondada;
+- usa fundo em gradiente escuro azulado;
+- define texto branco, peso médio e alinhamento central.
 
 ### `.tech-tag:hover`
 
-FunÃ§Ã£o:
-
-- adiciona leve elevaÃ§Ã£o e brilho azul ao passar o mouse
+Eleva levemente a tag, reforça a borda azul e adiciona sombra azul discreta.
 
 ## 7. Sobre
 
 ### `section.sobre`
 
-Função:
-
-- define o espaçamento da seção “Sobre”
+Define o espaçamento vertical da seção "Sobre".
 
 ### `section.sobre .flex`
 
-Função:
-
-- posiciona imagem e texto lado a lado
+Alinha imagem e texto lado a lado, centralizados e com espaçamento entre os blocos.
 
 ### `.sobre .txt-sobre`
 
-Função:
-
-- define a cor base do texto da seção
+Define a cor base do texto da seção.
 
 ### `.sobre .txt-sobre h2`
 
-Função:
-
-- estiliza o título da seção
+Estiliza o título da seção com tamanho grande, linha compacta e margem inferior.
 
 ### `.sobre .txt-sobre h2 span`
 
-Função:
-
-- aplica destaque azul ao nome
-- força quebra de linha com `display: block`
+Aplica destaque azul ao nome e força quebra de linha com `display: block`.
 
 ### `.sobre .txt-sobre p`
 
-Função:
-
-- define espaçamento e alinhamento dos parágrafos
-- usa cor secundária para leitura confortável
+Define margem, alinhamento justificado e cor secundária para os parágrafos.
 
 ### `.img-sobre img`
 
-Função:
+Controla a foto da seção "Sobre":
 
-- controla tamanho e enquadramento da foto da seção “Sobre”
-- aplica borda arredondada, brilho azul e sombra
+- largura máxima fluida;
+- altura fixa no desktop;
+- recorte com `object-fit: cover`;
+- enquadramento vertical ajustado;
+- cantos arredondados;
+- borda e sombras azuladas.
 
 ## 8. Redes sociais
 
 ### `.btn-social a`
 
-Função:
-
-- estiliza os links dos ícones sociais como botões circulares
+Estiliza os links sociais como botões circulares, com ícone centralizado, fundo escuro, borda discreta, texto branco e transição.
 
 ## 9. Portfólio
 
 ### `section.portifolio`
 
-Função:
-
-- define espaçamento da seção
-- define a seção como base para efeitos visuais posicionados no fundo
-- mantém o fundo principal preto para evitar corte visual entre seções
+Define o espaçamento da seção de projetos, posiciona a seção como referência para o efeito de fundo, esconde excessos visuais e mantém o fundo preto principal.
 
 ### `section.portifolio::before`
 
-Função:
-
-- cria um degradê azul espalhado por toda a largura da seção
-- faz o efeito crescer suavemente, ganhar força no meio e diminuir no final
-- adiciona foco visual aos projetos sem criar uma faixa dura entre seções
+Cria um efeito visual azul atrás dos projetos combinando gradiente linear, gradiente radial e blur. O pseudo-elemento fica sem interação (`pointer-events: none`) e atrás do conteúdo.
 
 ### `section.portifolio .interface`
 
-Função:
-
-- mantém o conteúdo da seção acima do degradê de fundo
+Mantém o conteúdo acima do efeito de fundo usando `position: relative` e `z-index: 1`.
 
 ### `section.portifolio .flex`
 
-Função:
-
-- distribui os cards dos projetos horizontalmente
+Distribui os cards dos projetos com espaçamento horizontal e margem superior.
 
 ### `.img-port`
 
-Função:
+Define os cards dos projetos:
 
-- define tamanho, borda arredondada e comportamento das imagens dos projetos
+- largura de `360px` e altura de `460px` no desktop;
+- imagem como `background-image`;
+- `background-size: cover`;
+- posição inicial no topo;
+- transição longa para simular rolagem da imagem no hover;
+- cursor de clique;
+- cantos arredondados;
+- posição relativa para receber o overlay.
 
 ### `.img-port--tall-scroll`
 
-Função:
-
-- aumenta a escala da imagem de fundo em cards com imagem menos alta
-- equilibra o efeito de rolagem visual em relação aos outros projetos
+Ajusta cards cuja imagem precisa de mais altura visual, ampliando o `background-size` e centralizando horizontalmente.
 
 ### `.img-port:hover`
 
-Função:
-
-- move a imagem de fundo ao passar o mouse
+Move o fundo até a parte inferior da imagem ao passar o mouse, criando efeito de rolagem do projeto.
 
 ### `.img-port--tall-scroll:hover`
 
-Função:
-
-- move a imagem ampliada mantendo o enquadramento central na horizontal
+Move o fundo ampliado até a parte inferior, mantendo o enquadramento central.
 
 ### `.overlay`
 
-Função:
+Cria a camada sobre o projeto:
 
-- cria uma camada escura sobre o projeto
-- posiciona o conteúdo do projeto na parte inferior do card
+- ocupa todo o card;
+- usa gradiente escuro azulado;
+- herda os cantos arredondados;
+- centraliza o conteúdo;
+- começa invisível com `opacity: 0`;
+- aparece com transição.
 
 ### `.overlay-content`
 
-Função:
-
-- organiza título, texto e link em coluna dentro do overlay
+Organiza título, descrição e link em coluna, centralizados e com espaçamento entre eles.
 
 ### `.overlay-content h3`
 
-Função:
-
-- estiliza o título do projeto dentro do overlay
+Estiliza o título do projeto dentro do overlay.
 
 ### `.overlay-content p`
 
-Função:
-
-- estiliza a descrição curta do projeto
+Estiliza a descrição curta do projeto com texto branco translúcido e boa leitura.
 
 ### `.project-link`
 
-Função:
-
-- cria um botão de link para acessar o projeto
+Cria o botão "Ver projeto", com gradiente azul, borda sutil, texto branco, largura ajustada ao conteúdo e cantos arredondados.
 
 ### `.project-link:hover`
 
-Função:
-
-- adiciona destaque visual ao link ao passar o mouse
+Adiciona sombra azul e deslocamento vertical leve no hover.
 
 ### `.img-port:hover .overlay`
 
-Função:
-
-- revela a camada quando o mouse passa sobre o card do projeto
+Revela o overlay do projeto quando o mouse passa sobre o card.
 
 ## 10. Formulário
 
 ### `section.formulario`
 
-Função:
-
-- define espaçamento da seção de contato
+Define o espaçamento da seção de contato.
 
 ### `form`
 
-Função:
-
-- limita a largura do formulário
-- empilha os campos em coluna
+Limita a largura do formulário, centraliza o bloco, empilha os campos em coluna e define espaçamento entre eles.
 
 ### `form input`
 
-Função:
-
-- define estilo básico dos campos de entrada
+Define a aparência básica dos campos de entrada.
 
 ### `form input::placeholder`
 
-Função:
-
-- muda a cor do texto de exemplo dentro dos inputs
+Aplica a cor secundária ao texto de exemplo dos inputs.
 
 ### `form input, form textarea`
 
-Função:
+Unifica a aparência dos inputs e da área de mensagem:
 
-- unifica aparência dos campos e textarea
+- largura total;
+- fundo escuro translúcido;
+- borda discreta;
+- remoção do contorno padrão;
+- espaçamento interno;
+- cantos arredondados;
+- texto branco;
+- fonte maior.
 
 ### `form textarea`
 
-Função:
-
-- impede redimensionamento manual
-- define altura padrão
+Impede redimensionamento manual e define altura de `150px`.
 
 ### `form .btn-enviar`
 
-Função:
-
-- centraliza o botão de envio
+Centraliza o botão de envio e adiciona margem superior.
 
 ### `form .btn-enviar input`
 
-Função:
-
-- estiliza o botão “ENVIAR”
+Estiliza o botão "ENVIAR" com largura fixa, gradiente azul, texto branco, peso forte, cursor de clique e transição.
 
 ### `form .btn-enviar input:hover`
 
-Função:
-
-- aplica brilho e escala ao passar o mouse
+Aplica brilho azul e aumento de escala ao passar o mouse.
 
 ### `#status`
 
-Função:
-
-- estiliza a mensagem exibida após envio do formulário
+Estiliza a mensagem exibida abaixo do formulário após o envio.
 
 ## 11. Rodapé
 
 ### `footer`
 
-Função:
-
-- define espaçamento do rodapé
-- cria separação visual em relação ao conteúdo anterior
+Define espaçamento do rodapé e adiciona uma linha sutil no topo com `box-shadow` interno.
 
 ### `footer .flex`
 
-Função:
-
-- distribui logo e ícones sociais
+Distribui logo e ícones sociais nas extremidades no desktop.
 
 ### `footer .line-footer`
 
-Função:
-
-- controla o espaçamento das linhas internas do rodapé
+Controla o espaçamento interno das linhas do rodapé.
 
 ### `.borda`
 
-Função:
-
-- adiciona a linha superior de separação no rodapé
+Adiciona uma linha superior de separação.
 
 ### `footer .line-footer p i`
 
-Função:
-
-- estiliza o ícone do e-mail
+Estiliza o ícone do e-mail com azul de destaque e tamanho maior.
 
 ### `footer .line-footer p a`
 
-Função:
-
-- define a cor do link de e-mail
+Define a cor branca do link de e-mail.
 
 ## 12. Responsividade
 
 ### `@media screen and (max-width: 1200px)`
 
-Função:
+Adapta o site para telas menores. As principais mudanças são:
 
-- adapta o layout para telas menores
-
-Principais mudanças dentro desse bloco:
-
-- `.flex` vira coluna
-- o topo passa a mostrar imagem e texto empilhados
-- o menu desktop some
-- o botão do menu mobile aparece
-- especialidades viram uma coluna
-- o título de especialidades ganha espaço extra antes dos cards
-- imagens ficam com largura mais fluida
-- rodapé passa a empilhar conteúdo
+- `.flex` passa a organizar elementos em coluna;
+- o topo usa `column-reverse`, deixando a imagem acima do texto;
+- títulos ficam maiores na regra global responsiva;
+- menu desktop e botões de contato do cabeçalho ficam ocultos;
+- botão do menu mobile aparece;
+- menu mobile vira painel lateral fixo;
+- imagem do topo fica limitada a `460px`;
+- cards de soft skills passam para uma coluna;
+- tags de tecnologia ocupam largura total;
+- seção "Sobre" centraliza título e botões sociais;
+- imagem da seção "Sobre" fica menor e fluida;
+- cards de portfólio ficam centralizados e com altura menor;
+- rodapé empilha logo e ícones sociais.
 
 ### `.menu-mobile`
 
-Função:
+No responsivo, define o painel lateral:
 
-- define aparência e comportamento do menu lateral em telas menores
+- fundo azul escuro translúcido;
+- borda lateral;
+- posição fixa no canto direito;
+- altura total da tela;
+- largura inicial `0%`;
+- limite de `70vw`;
+- conteúdo escondido quando fechado;
+- transição de abertura.
 
 ### `.menu-mobile.abrir-menu`
 
-Função:
-
-- expande o menu quando a classe é adicionada via JavaScript
+Expande o menu mobile para `70%` da largura quando a classe é adicionada pelo JavaScript.
 
 ### `.menu-mobile.abrir-menu ~ .overlay-menu`
 
-Função:
+Exibe o overlay quando o menu mobile está aberto.
 
-- ativa a camada escura por trás do menu aberto
+### `.menu-mobile .btn-fechar` e `.menu-mobile .btn-fechar i`
+
+Estilizam a área e o ícone do botão de fechar.
+
+### `.menu-mobile nav ul`, `.menu-mobile nav ul li a` e `.menu-mobile nav ul a:hover`
+
+Alinham os links à direita, aumentam a área clicável, definem cor e aplicam gradiente azul ao item no hover.
 
 ### `.overlay-menu`
 
-Função:
-
-- cobre a tela quando o menu mobile está aberto
+Cria a camada fixa que ocupa toda a tela atrás do menu mobile. Ela fica transparente e serve para fechar o menu ao clicar fora dele.
 
 ## Resumo final
 
-O `style.css` está dividido em blocos por seção do site. A lógica principal dele é:
+O `style.css` está dividido por áreas do site. A lógica principal é:
 
-- definir uma identidade visual com variáveis
-- organizar o layout com `flex`
-- destacar pontos importantes com azul
-- usar hover e sombras para dar profundidade
-- adaptar tudo para mobile no final do arquivo
-
-
-
-
-
-
-
-
+- manter uma identidade visual escura com destaque azul;
+- centralizar o conteúdo usando `.interface`;
+- organizar layouts com `.flex`;
+- destacar botões, cards e links com hover, sombras e transições;
+- usar imagens reais do portfólio como elementos principais;
+- adaptar a navegação e os blocos para mobile no final do arquivo.
